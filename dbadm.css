@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('bg.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+}
+
+.sidebar {
+    width: 60px;
+    background-color: #004d4d;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.sidebar a {
+    color: white;
+    font-size: 20px;
+    margin: 20px 0;
+    text-decoration: none;
+}
+.sidebar .in{
+    background-color: #3aa7a7;
+    width: 40px;
+    border-radius: 50px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin: 20px 0;
+    text-decoration: none;
+}
+.sidebar .out{
+    color: white;
+    font-size: 20px;
+    margin: 400px 0;
+    text-decoration: none;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    color: #000;
+}
+
+h1 {
+    font-family: 'Dosis', sans-serif;
+    font-size: 40px;
+    margin-bottom: 30px;
+    margin-top: 5px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.card {
+    background-color: rgba(0, 77, 77, 0.85);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 645px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+}
+
+.card.full {
+    width: 100%;
+}
+
+.card button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #eee;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.card input {
+    margin-top: 10px;
+    padding: 6px;
+    width: 80%;
+    border: none;
+    border-radius: 6px;
+}
