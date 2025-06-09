@@ -58,10 +58,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="sidebar">
         <a href="#"><i class="fas fa-user-circle" style="font-size: 30px;"></i></a>
-        <a href="dbadm.php"><i class="fas fa-home"></i></a>
+        <a href="dashboard_adm.php"><i class="fas fa-home"></i></a>
         <div class="in"><i class="fas fa-user-plus"></i></div>
-        <a href="data.php"><i class="fas fa-list-ul"></i></a>
-        <a href="daftar.php"><i class="fas fa-edit"></i></a>
+        <a href="read.php"><i class="fas fa-list-ul"></i></a>
+        <a href="persetujuan.php"><i class="fas fa-edit"></i></a>
         <a href="logout.php" class="out"><i class="fas fa-sign-out-alt"></i></a>
     </div>
 
