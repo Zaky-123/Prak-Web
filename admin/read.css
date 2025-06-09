@@ -72,18 +72,18 @@ th, td {
 }
 
 .edit {
-    background: lightgreen;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: black;
-    margin-right: 5px;
-}
-
-.hapus {
     background: green;
     padding: 5px 10px;
     border-radius: 5px;
     text-decoration: none;
     color: white;
+    margin-right: 5px;
+}
+
+.hapus {
+    background: lightgreen;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
 }

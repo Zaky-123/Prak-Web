@@ -40,7 +40,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
             <div class="card">
                 <h2>Pengajuan Revisi Data</h2>
                 <p>Tinjau Revisi dari alumni dan setuju atau tolak</p>
-                <button onclick="location.href='daftar.php'">Daftar Revisi</button>
+                <button onclick="location.href='persetujuan.php'">Daftar Revisi</button>
             </div>
 
             <div class="card full">
