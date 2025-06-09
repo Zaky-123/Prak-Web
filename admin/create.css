@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: url('bg.png') no-repeat center center fixed;
+    background: url('../pictures/bg.png') no-repeat center center fixed;
     background-size: cover;
     display: flex;
     height: 100vh;
@@ -45,6 +45,8 @@ body {
     flex-grow: 1;
     padding: 20px;
     overflow-y: auto;
+    max-height: 100vh;
+    box-sizing: border-box; /* jaga padding tidak melebihi batas */
 }
 
 .content h2 {
@@ -113,4 +115,7 @@ button {
 
 button:hover {
     background-color: #0d7377;
+}
+html, body {
+    overflow: hidden;
 }

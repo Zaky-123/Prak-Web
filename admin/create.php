@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Tambah Alumni</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="tambah.css">
+    <link rel="stylesheet" href="create.css">
 </head>
 <body>
 <?php
