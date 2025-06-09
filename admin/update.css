@@ -131,3 +131,6 @@ input[type="file"] {
     font-family: Arial, sans-serif;
     cursor: pointer;
 }
+html, body {
+    overflow: hidden;
+}

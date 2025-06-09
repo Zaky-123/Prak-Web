@@ -70,3 +70,6 @@ body {
   width: 49.5%;
   color: white;
 }
+html, body {
+    overflow: hidden;
+}

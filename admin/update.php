@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tanggal_masuk = $_POST['tanggal_masuk'];
     $tanggal_lulus = $_POST['tanggal_lulus'];
     $alamat = mysqli_real_escape_string($conn, $_POST['alamat']);
-    $no_hp = mysqli_real_escape_string($conn, $_POST['no_handphone']);
+    $no_hp = mysqli_real_escape_string($conn, $_POST['no_hp']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $status_pekerjaan = mysqli_real_escape_string($conn, $_POST['status_pekerjaan']);
 
@@ -54,8 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         tanggal_masuk = '$tanggal_masuk',
         tanggal_lulus = '$tanggal_lulus',
         alamat = '$alamat',
-        no_handphone = '$no_hp',
+        no_hp = '$no_hp',
         email = '$email',
+        password = '{$alumni['password']}', 
         status_pekerjaan = '$status_pekerjaan',
         foto = '$foto_path'
         WHERE nisn = '$nisn'";
@@ -85,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="in"><i class="fas fa-user-edit"></i></div>
     <a href="read.php"><i class="fas fa-list-ul"></i></a>
     <a href="persetujuan.php"><i class="fas fa-edit"></i></a>
-    <div class="out"><i class="fas fa-sign-out-alt"></i></div>
+    <div class="out"><a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i></a></div>
 </div>
 
 <div class="content">
@@ -125,12 +126,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="form-group">
                 <label>No. Handphone:</label>
-                <input type="tel" name="no_handphone" value="<?= htmlspecialchars($alumni['no_handphone']) ?>">
+                <input type="tel" name="no_hp" value="<?= htmlspecialchars($alumni['no_hp']) ?>">
             </div>
             <div class="form-group">
                 <label>Email:</label>
                 <input type="email" name="email" value="<?= htmlspecialchars($alumni['email']) ?>" required>
             </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" name="password" placeholder="Kosongkan jika tidak ingin mengubah">
             <div class="form-group">
                 <label>Status Pekerjaan:</label>
                 <select name="status_pekerjaan">

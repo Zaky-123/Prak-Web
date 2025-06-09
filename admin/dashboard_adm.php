@@ -24,7 +24,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
         <a href="create.php"><i class="fas fa-user-plus"></i></a>
         <a href="read.php"><i class="fas fa-list-ul"></i></a>
         <a href="persetujuan.php"><i class="fas fa-edit"></i></a>
-        <div class="out"><a href="logout.php"><i class="fas fa-sign-out-alt"></i></a></div>
+        <div class="out"><a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i></a></div>
     </div>
 
     <div class="main-content">

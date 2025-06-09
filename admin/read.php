@@ -40,7 +40,7 @@ if (!$result) {
     <a href="create.php"><i class="fas fa-user-plus"></i></a>
     <div class="in"><i class="fas fa-list-ul"></i></div>
     <a href="persetujuan.php"><i class="fas fa-edit"></i></a>
-    <div class="out"><a href="logout.php"><i class="fas fa-sign-out-alt"></i></a></div>
+    <div class="out"><a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i></a></div>
 </div>
 
 <div class="content">

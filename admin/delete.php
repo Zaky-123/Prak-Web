@@ -18,7 +18,7 @@ $nisn = mysqli_real_escape_string($conn, $_GET['nisn']);
 $query = "DELETE FROM alumni WHERE nisn = '$nisn'";
 
 if (mysqli_query($conn, $query)) {
-    header('Location: read_alumni.php?msg=deleted');
+    header('Location: read.php?msg=deleted');
     exit;
 } else {
     echo "Gagal menghapus data: " . mysqli_error($conn);

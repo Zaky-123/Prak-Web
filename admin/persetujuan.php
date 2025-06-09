@@ -55,7 +55,7 @@ $result = mysqli_query($conn, $query);
     <a href="create.php"><i class="fas fa-user-plus"></i></a>
     <a href="read.php"><i class="fas fa-list-ul"></i></a>
     <div class="in"><i class="fas fa-edit"></i></div>
-    <div class="out"><i class="fas fa-sign-out-alt"></i></div>
+    <div class="out"><a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i></a></div>
 </div>
 
 <div class="content">
