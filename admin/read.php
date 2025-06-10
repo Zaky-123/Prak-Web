@@ -3,7 +3,7 @@ session_start();
 require_once '../config/db.php';
 
 if (!isset($_SESSION['admin_logged_in'])) {
-    header('Location: login_admin.php');
+    header('Location:../auth/login_admin.php');
     exit;
 }
 
