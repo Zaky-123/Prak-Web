@@ -91,6 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <option value="alamat">Alamat</option>
                             <option value="email">Email</option>
                             <option value="no_hp">No Handphone</option>
+                            <option value="pekerjaan">Pekerjaan</option>
+                            <option value="pendidikan">Pendidikan</option>
                         </select>
                     </div>
 
@@ -112,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </section>
 
             <footer class="footer">
-                <a href="lihat.php">BACK</a>
+                <a href="home.php">BACK</a>
             </footer>
         </main>
     </div>

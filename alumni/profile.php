@@ -86,7 +86,7 @@ $pendidikan = mysqli_fetch_all($res2, MYSQLI_ASSOC);
                         <ul>
                             <?php if (!empty($pekerjaan)): ?>
                                 <?php foreach ($pekerjaan as $p): ?>
-                                    <li><?= htmlspecialchars($p['perusahaan']) ?> - <?= htmlspecialchars($p['posisi']) ?> (<?= htmlspecialchars($p['tanggal_mulai']) ?>)</li>
+                                    <li><?= htmlspecialchars($p['nama_perusahaan']) ?> - <?= htmlspecialchars($p['posisi']) ?> (<?= htmlspecialchars($p['tanggal_mulai']) ?>)</li>
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <li>Belum ada riwayat pekerjaan</li>
@@ -100,7 +100,7 @@ $pendidikan = mysqli_fetch_all($res2, MYSQLI_ASSOC);
                         <ul>
                             <?php if (!empty($pendidikan)): ?>
                                 <?php foreach ($pendidikan as $p): ?>
-                                    <li><?= htmlspecialchars($p['institusi']) ?> - <?= htmlspecialchars($p['jenjang']) ?> (<?= htmlspecialchars($p['tahun_mulai']) ?> - <?= htmlspecialchars($p['tahun_selesai']) ?>)</li>
+                                    <li><?= htmlspecialchars($p['nama_institusi']) ?> - <?= htmlspecialchars($p['jenjang']) ?> (<?= htmlspecialchars($p['tahun_masuk']) ?> - <?= htmlspecialchars($p['tahun_lulus']) ?>)</li>
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <li>Belum ada riwayat pendidikan</li>

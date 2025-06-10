@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Simpan Perubahan</button>
     </form>
 
-    <p><a href="read_alumni.php">⬅️ Kembali ke Data Alumni</a></p>
+    <p><a href="read.php">⬅️ Kembali ke Data Alumni</a></p>
 </div>
 </body>
 </html>

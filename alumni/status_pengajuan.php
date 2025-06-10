@@ -83,6 +83,9 @@ if ($result) {
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
+            <footer class="footer">
+                <a href="home.php">BACK</a>
+            </footer>
         </main>
     </div>
 </body>

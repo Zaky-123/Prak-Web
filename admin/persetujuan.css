@@ -1,12 +1,13 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: url('bg.png') no-repeat center center fixed;
+    background: url('../pictures/bg.png') no-repeat center center fixed;
     background-size: cover;
     display: flex;
 }
 
 .sidebar {
+    position: fixed;
     width: 60px;
     background-color: #004d4d;
     height: 100vh;
@@ -30,16 +31,17 @@ body {
     font-size: 20px;
     text-align: center;
     margin: 20px 0;
-    text-decoration: none;
 }
 .sidebar .out{
     color: white;
     font-size: 20px;
-    margin: 400px 0;
-    text-decoration: none;
+    margin-top: auto;
+    margin-bottom: 20px;
+
 }
 
 .content {
+    margin-left: 60px; 
     flex-grow: 1;
     padding: 20px;
     color: #000;
@@ -71,5 +73,5 @@ body {
   color: white;
 }
 html, body {
-    overflow: hidden;
+    overflow: auto;
 }

@@ -34,7 +34,9 @@ if (!isset($_SESSION['admin_logged_in'])) {
             <div class="card">
                 <h2>Data Alumni</h2>
                 <p>Tambahkan data alumni</p>
-                <button onclick="location.href='create.php'">Tambah Alumni</button>
+                <button onclick="location.href='create.php'">Tambah Data Alumni</button>
+                <button onclick="location.href='histori_pendidikan_alumni.php'">Tambah Data Pendidikan Alumni</button>
+                <button onclick="location.href='histori_pekerjaan_alumni.php'">Tambah Data Pekerjaan Alumni</button>
             </div>
 
             <div class="card">
