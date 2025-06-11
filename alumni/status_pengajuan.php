@@ -51,8 +51,8 @@ if ($result) {
                 <a href="pengajuan_update.php"><i class="fas fa-edit"></i></a>
                 <a href="status_pengajuan.php" class="active"><i class="fas fa-clipboard-check"></i></a>
             </div>
-            <div class="logout">
-                <a href="login.php"><i class="fas fa-sign-out-alt"></i></a>
+             <div class="logout">
+                <a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i></a>
             </div>
         </aside>
 

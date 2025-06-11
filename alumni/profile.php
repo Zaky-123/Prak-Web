@@ -56,7 +56,7 @@ $pendidikan = mysqli_fetch_all($res2, MYSQLI_ASSOC);
                 <a href="status_pengajuan.php"><i class="fas fa-clipboard-check"></i></a>
             </div>
             <div class="logout">
-                <a href="login.php"><i class="fas fa-sign-out-alt"></i></a>
+                <a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i></a>
             </div>
         </aside>
 
