@@ -18,23 +18,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $alasan = mysqli_real_escape_string($conn, $_POST['reason']);
 
     // Ambil nilai lama
+    $allowed_alumni_fields = ['alamat', 'email', 'no_hp'];
+$histori_fields = ['pekerjaan', 'pendidikan'];
+
+if (in_array($field, $allowed_alumni_fields)) {
     $query = "SELECT `$field` FROM alumni WHERE nisn = '$nisn'";
     $result = mysqli_query($conn, $query);
-
     if ($result && $row = mysqli_fetch_assoc($result)) {
         $nilai_lama = $row[$field];
-
-        // Insert ke alumni_revisi
-        $insert = "INSERT INTO alumni_revisi (alumni_id, field, nilai_lama, nilai_baru, keterangan, status) 
-                   VALUES ('$nisn', '$field', '$nilai_lama', '$nilai_baru', '$alasan', 'pending')";
-
-        if (mysqli_query($conn, $insert)) {
-            $success_message = "Permintaan perubahan berhasil diajukan.";
-        } else {
-            $error_message = "Gagal mengajukan perubahan.";
-        }
     } else {
-        $error_message = "Field tidak valid.";
+        $error_message = "Gagal mengambil data lama dari alumni.";
+    }
+} elseif ($field === 'pekerjaan') {
+    $query = "SELECT nama_perusahaan, posisi, tanggal_mulai, tanggal_selesai 
+              FROM histori_pekerjaan 
+              WHERE alumni_id = '$nisn' 
+              ORDER BY tanggal_mulai DESC 
+              LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    if ($result && $row = mysqli_fetch_assoc($result)) {
+        $tgl_selesai = $row['tanggal_selesai'] ?? 'Sekarang';
+        $nilai_lama = "{$row['nama_perusahaan']} - {$row['posisi']} ({$row['tanggal_mulai']} s.d. $tgl_selesai)";
+    } else {
+        $nilai_lama = 'Belum ada data';
+    }
+} elseif ($field === 'pendidikan') {
+    $query = "SELECT nama_institusi, jurusan, jenjang, tahun_masuk, tahun_lulus 
+              FROM histori_pendidikan 
+              WHERE alumni_id = '$nisn' 
+              ORDER BY tahun_masuk DESC 
+              LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    if ($result && $row = mysqli_fetch_assoc($result)) {
+        $tahun_lulus = $row['tahun_lulus'] ?? 'Sekarang';
+        $nilai_lama = "{$row['jenjang']} - {$row['nama_institusi']} ({$row['jurusan']}) {$row['tahun_masuk']} - $tahun_lulus";
+    } else {
+        $nilai_lama = 'Belum ada data';
+    }
+} else {
+    $error_message = "Field tidak valid.";
+}
+
+    if (empty($error_message)) {
+        // Simpan data update ke tabel pengajuan
+        $query = "INSERT INTO alumni_revisi (alumni_id, field, nilai_lama, nilai_baru, status, keterangan) 
+                  VALUES ('$nisn', '$field', '$nilai_lama', '$nilai_baru', 'pending','$alasan')";
+        if (mysqli_query($conn, $query)) {
+            $success_message = "Pengajuan update berhasil dikirim.";
+        } else {
+            $error_message = "Gagal mengirim pengajuan: " . mysqli_error($conn);
+        }
     }
 }
 ?>
