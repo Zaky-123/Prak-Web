@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $allowed_alumni_fields = ['alamat', 'email', 'no_hp'];
     $histori_fields = ['pekerjaan', 'pendidikan'];
 
+    // Validasi field yang dipilih
     if (in_array($field, $allowed_alumni_fields)) {
         $query = "SELECT `$field` FROM alumni WHERE nisn = '$nisn'";
         $result = mysqli_query($conn, $query);
