@@ -3,34 +3,30 @@ session_start();
 require_once '../config/db.php';
 
 if (!isset($_SESSION['admin_logged_in'])) {
-    header('Location:../auth/login_admin.php');
+    header('Location: ../auth/login_admin.php');
     exit;
 }
 
 // Proses persetujuan atau penolakan
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['aksi'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['aksi'], $_POST['id'])) {
     $id = (int) $_POST['id'];
     $aksi = $_POST['aksi'];
 
+    // Ambil data revisi untuk validasi
     $query = "SELECT * FROM alumni_revisi WHERE id = $id";
     $result = mysqli_query($conn, $query);
     $revisi = mysqli_fetch_assoc($result);
 
     if ($revisi && $revisi['status'] === 'pending') {
         if ($aksi === 'approve') {
-            $field = mysqli_real_escape_string($conn, $revisi['field']);
-            $new_value = mysqli_real_escape_string($conn, $revisi['nilai_baru']);
-            $alumni_id = mysqli_real_escape_string($conn, $revisi['alumni_id']);
-
-            mysqli_query($conn, "UPDATE alumni SET $field = '$new_value', status_update = 'approved' WHERE nisn = '$alumni_id'");
             mysqli_query($conn, "UPDATE alumni_revisi SET status = 'approved' WHERE id = $id");
-
         } elseif ($aksi === 'reject') {
             mysqli_query($conn, "UPDATE alumni_revisi SET status = 'rejected' WHERE id = $id");
         }
     }
 }
 
+// Ambil semua data revisi
 $query = "
 SELECT ar.*, a.nama 
 FROM alumni_revisi ar
