@@ -1,13 +1,16 @@
 <?php
 session_start();
 require_once '../config/db.php';
+//mengambil data dari inputan form login admin
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
-
+    // Cek apakah username dan password sudah diisi
     $query = "SELECT * FROM admin WHERE username = '$username' LIMIT 1";
     $result = mysqli_query($conn, $query);
-
+    // Cek apakah query berhasil dan ada satu baris data yang ditemukan
+     // Jika ada, ambil data admin
+     // Verifikasi password
     if ($result && mysqli_num_rows($result) === 1) {
         $admin = mysqli_fetch_assoc($result);
         if (password_verify($password, $admin['password'])) {

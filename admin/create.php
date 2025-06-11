@@ -10,12 +10,12 @@
 <?php
 session_start();
 require_once '../config/db.php';
-
+// Cek apakah admin sudah login
 if (!isset($_SESSION['admin_logged_in'])) {
     header('Location:../auth/login_admin.php');
     exit;
 }
-
+// mengambil data dari form tambah alumni
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nisn = mysqli_real_escape_string($conn, $_POST['nisn']);
     $nama = mysqli_real_escape_string($conn, $_POST['nama']);
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Hash password
     $password = password_hash($password_input, PASSWORD_DEFAULT);
-
+    // menambahkan foto jika ada
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
         $upload_dir = '../uploads/';
         if (!file_exists($upload_dir)) {
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         move_uploaded_file($_FILES['foto']['tmp_name'], $upload_dir . $filename);
         $foto_path = 'uploads/' . $filename;
     }
-
+    // menambahkan data alumni ke database
     $query = "INSERT INTO alumni (
                 nisn, nama, peminatan, angkatan, tanggal_masuk, tanggal_lulus,
                 alamat, no_hp, email, password, foto, status_pekerjaan

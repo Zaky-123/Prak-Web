@@ -1,14 +1,15 @@
 <?php
 session_start();
 require_once '../config/db.php';
-
+//mengambil data dari inputan form login alumni
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nisn = mysqli_real_escape_string($conn, $_POST['nisn']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     $query = "SELECT * FROM alumni WHERE nisn = '$nisn' LIMIT 1";
     $result = mysqli_query($conn, $query);
-
+    // Cek apakah query berhasil dan ada satu baris data yang ditemukan
+    // Jika ada, ambil data alumni  
     if ($result && mysqli_num_rows($result) === 1) {
         $alumni = mysqli_fetch_assoc($result);
         if (password_verify($password, $alumni['password'])) {
