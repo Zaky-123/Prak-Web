@@ -1,0 +1,56 @@
+CREATE TABLE alumni (
+    nisn VARCHAR(20) PRIMARY KEY,
+    nama VARCHAR(100) NOT NULL,
+    peminatan VARCHAR(100),
+    angkatan VARCHAR(5) NOT NULL,
+    tanggal_masuk DATE NOT NULL,
+    tanggal_lulus DATE NOT NULL,
+    alamat TEXT NOT NULL,
+    no_hp VARCHAR(15),
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password Varchar(100),
+    foto TEXT,  -- path ke file/foto
+    status_pekerjaan ENUM('Kuliah', 'Bekerja') DEFAULT 'Kuliah',
+    status_update VARCHAR(20) DEFAULT 'approved'
+);
+
+
+CREATE TABLE histori_pendidikan (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    alumni_id VARCHAR(20) NOT NULL,
+    nama_institusi VARCHAR(100) NOT NULL,
+    jurusan VARCHAR(100),
+    jenjang VARCHAR(50),
+    tahun_masuk INT,
+    tahun_lulus INT,
+    FOREIGN KEY (alumni_id) REFERENCES alumni(nisn) ON DELETE CASCADE
+);
+
+CREATE TABLE histori_pekerjaan (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    alumni_id VARCHAR(20) NOT NULL,
+    nama_perusahaan VARCHAR(100) NOT NULL,
+    posisi VARCHAR(100) NOT NULL,
+    tanggal_mulai DATE NOT NULL,
+    tanggal_selesai DATE,
+    FOREIGN KEY (alumni_id) REFERENCES alumni(nisn) ON DELETE CASCADE
+);
+
+
+CREATE TABLE alumni_revisi (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    alumni_id VARCHAR(20) NOT NULL,
+    field VARCHAR(100) NOT NULL,         -- misal: 'email', 'status_pekerjaan'
+    nilai_lama TEXT NOT NULL,
+    nilai_baru TEXT NOT NULL,
+    status VARCHAR(20) DEFAULT 'pending', -- 'pending', 'approved', 'rejected'
+    keterangan TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (alumni_id) REFERENCES alumni(nisn) ON DELETE CASCADE
+);
+
+CREATE TABLE admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL
+) 
